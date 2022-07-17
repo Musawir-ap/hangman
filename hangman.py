@@ -1,9 +1,10 @@
 import random
 import string
 
+from hang_tree import hang_tree
 from words import words_
 
-print('-- Hangan game --')
+print('-- Hangan game --\n')
 
 
 def get_valid(words):
@@ -22,7 +23,8 @@ def hangman():
     life = 6
 
     while len(word_letters) > 0 and life > 0:
-        print(f'\nlife : {life}   used : ', ' '.join(used_letter))
+        print(hang_tree[life])
+        print(f'\nused : ', ' '.join(used_letter))
         word_list = [letter if letter in used_letter else '_' for letter in word]
         print('word : ', ' '.join(word_list))
 
@@ -41,7 +43,7 @@ def hangman():
             print('❌❌❌ invalid character!, try again.')
 
     if life == 0:
-        print('sorry, you failed 💔🥲\nthe word is ', word)
+        print(f'{hang_tree[0]}\nsorry, you failed 💔🥲\nthe word is ', word)
     else:
         print(f'word : {word}\nyaaay, you won❤️‍🔥💯\nRESPECT ++ ')
 
